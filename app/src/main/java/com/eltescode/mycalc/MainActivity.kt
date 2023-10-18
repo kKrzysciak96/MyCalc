@@ -15,7 +15,7 @@ import com.eltescode.mycalc.ui.theme.MyCalcTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Constants.BASE_URL
+
         setContent {
             MyCalcTheme {
                 // A surface container using the 'background' color from the theme
