@@ -1,5 +1,7 @@
 package com.eltescode.mycalc.domain
 
+import android.util.Log
+
 class ExpressionWriter {
 
     var expression = ""
@@ -22,7 +24,7 @@ class ExpressionWriter {
             }
 
             CalculatorAction.Delete -> {
-                expression.dropLast(1)
+                expression = expression.dropLast(1)
             }
 
             is CalculatorAction.Number -> {
@@ -42,7 +44,7 @@ class ExpressionWriter {
     }
 
     private fun prepareForCalculation(): String {
-        val newExpression = expression.takeLastWhile { it in "$operationSymbols(." }
+        val newExpression = expression.dropLastWhile { it in "$operationSymbols(." }
         if (newExpression.isEmpty()) {
             return "0"
         }
