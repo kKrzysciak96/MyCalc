@@ -10,10 +10,7 @@ class ExpressionParser(private val calculation: String) {
 
             when {
                 currentChar in operationSymbols -> resultPartsList
-                    .add(
-                        index = i,
-                        element = ExpressionPart.OperationType(operationFromSymbol(currentChar))
-                    )
+                    .add(ExpressionPart.OperationType(operationFromSymbol(currentChar)))
 
                 currentChar.isDigit() -> {
                     i = parseNumber(startingIndex = i, mutableList = resultPartsList)
@@ -23,8 +20,6 @@ class ExpressionParser(private val calculation: String) {
                 currentChar in "()" -> {
                     parseParenthesis(character = currentChar, mutableList = resultPartsList)
                 }
-
-                else -> throw Exception()
             }
             i++
         }
